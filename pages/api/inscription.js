@@ -1,27 +1,32 @@
 //imports
-const fs = require('fs')
-const { v4: uuidv4 } = require('uuid')
+import connectDB from '../../database/config/mongodb'
+import User from '../../database/models/user'
 
-export default function handler(req, res) {
-    if(req.body.length === 0) return res.json({error: true})
-    //variables
-    let rawdata = fs.readFileSync('database/users.json')
-    let users = JSON.parse(rawdata)
-    let new_user = req.body
-    let exist = false
-    users.forEach(user => {
-        if(user.email == new_user.email){
-            exist = true
-            return 0
+const handler = async(req, res) => {
+    if(req.method === 'POST'){
+        const user_data = req.body
+
+        //checking if email is unique
+        const unique = await User.findOne({email: user_data.email})
+        if(unique) return res.json({error: true, error_message: 'Adresse email déja utilisé'})
+
+        try{
+            const user = await new User({
+                nom_complet: user_data.nom_complet,
+                email: user_data.email,
+                google: user_data.google ? true: false,
+                mot_de_passe: user_data.mot_de_passe ? user_data.mot_de_passe : null,
+                etat: 0,
+                date_inscription: new Date()
+            })
+            await user.save().then(result => {
+                if(result) return res.json({error: false, user: result})
+                return res.json({error: true, error_message: 'User not created (problem in DB)'})
+            })
+        }catch(err){
+            return res.json({error: true, error_message: err.message})
         }
-    })
-    if(exist) return res.json({error: "Adresse email existe déja"})
-    new_user.etat = "examen"
-    new_user.id = uuidv4().substring(0, 8)
-    users = [...users, new_user]
-    let data = JSON.stringify(users, null, 2)
-    fs.writeFileSync('database/users.json', data, (err)=>{
-        console.log('data added')
-    })
-    res.status(200).json({error: false})
+    }
 }
+
+export default connectDB(handler)
