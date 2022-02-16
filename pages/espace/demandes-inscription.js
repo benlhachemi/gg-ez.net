@@ -8,7 +8,6 @@ import Axios from 'axios'
 const Index = () => {
     //useAuth HOOK
     const [user, loading] = useAuth()
-    console.log(user)
 
     //functions
     const redirect_sign_in = () => {
@@ -29,6 +28,7 @@ const Index = () => {
     return (
         <div>
             {loading ? <Loader /> : !user && redirect_sign_in()}
+            {user.role !== 'admin'}
             {user &&
                 <div className="w-full min-h-screen bg-gray-100 flex">
                     <div className="sidebar w-1/6 h-screen bg-gray-700 justify-center shadow-md py-3 text-center px-2">
