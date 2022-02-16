@@ -25,6 +25,14 @@ var user = new Schema({
     etat: {
         type: Number,
         required: true
+    },
+    user_id: {
+        type: String,
+        required: true
+    },
+    date_inscription: {
+        type: Date,
+        required: true
     }
 });
 

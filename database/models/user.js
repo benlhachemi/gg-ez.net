@@ -21,7 +21,7 @@ var user = new Schema({
         type: Number,
         required: true
     },
-    date_inscriprion: {
+    date_inscription: {
         type: Date,
         default: Date.now
     },

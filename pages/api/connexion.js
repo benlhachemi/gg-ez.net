@@ -21,7 +21,9 @@ const handler = async(req, res) => {
                         role: user.role,
                         etat: user.etat,
                         google: true,
-                        session_id: session_id
+                        session_id: session_id,
+                        user_id: user._id,
+                        date_inscription: user.date_inscription
                     })
                     await session.save().then(result => {
                         if(result) return res.json({error: false, session_id: session_id})
@@ -39,7 +41,9 @@ const handler = async(req, res) => {
                         role: user.role,
                         etat: user.etat,
                         google: false,
-                        session_id: session_id
+                        session_id: session_id,
+                        user_id: user._id,
+                        date_inscription: user.date_inscription
                     })
                     await session.save().then(result => {
                         if(result) return res.json({error: false, session_id: session_id})
