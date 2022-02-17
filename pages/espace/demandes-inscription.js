@@ -92,21 +92,21 @@ const Index = () => {
                     <Sidebar user={user} />
                     <div className="content min-h-screen w-full py-5 px-5">
                         {demandes_loading ? <CircularProgress /> : demandes_inscription && demandes_inscription.length === 0 ? 
-                        <div className="mx-auto py-3 px-4 text-center shadow-md rounded-md w-2/4 my-10 bg-red-400 text-white font-bold">Il n'ya aucune nouvelle demande d'inscription pour le moment.</div> :
+                        <div className="mx-auto py-3 px-4 text-center shadow-md rounded-md w-2/4 my-10 bg-red-400 text-white font-bold">Il n&apos;ya aucune nouvelle demande d&apos;inscription pour le moment. 📝</div> :
                         <div>
                             {demandes_inscription.map((elt, i) => (
                                 <div key={i} className="my-5 cursor-pointer w-2/5 rounded-md shadow-md py-4 mx-auto px-5 text-gray-700 bg-gray-300">
                                     <h1 className="text-lg my-2"><span className="font-bold">Nom complet : </span>{elt.nom_complet}</h1>
                                     <h1 className="text-lg my-2"><span className="font-bold">Email : </span>{elt.email}</h1>
-                                    <h1 className="text-lg my-2"><span className="font-bold">Date d'inscription : </span>{get_date(elt)}</h1>
+                                    <h1 className="text-lg my-2"><span className="font-bold">Date d&apos;inscription : </span>{get_date(elt)}</h1>
                                     <h1 className="text-lg my-2"><span className="font-bold">Role : </span>
                                         <select className="rounded-md shadow-md py-1 px-3 animate__animated">
                                             <option value="null" selected>Choisir un role</option>
                                             <option value="admin">Administrateur</option>
-                                            <option value="ECSAE">Responsable d'équipe ECSAE</option>
-                                            <option value="ECAE">Responsable d'équipe ECAE</option>
-                                            <option value="EPCME">Responsable d'équipe EPCME</option>
-                                            <option value="EEMI">Responsable d'équipe EEMI</option>
+                                            <option value="ECSAE">Responsable d&apos;équipe ECSAE</option>
+                                            <option value="ECAE">Responsable d&apos;équipe ECAE</option>
+                                            <option value="EPCME">Responsable d&apos;équipe EPCME</option>
+                                            <option value="EEMI">Responsable d&apos;équipe EEMI</option>
                                             <option value="permanent">Permanent</option>
                                             <option value="associe">Associé</option>
                                             <option value="doctorant">Doctorant</option>

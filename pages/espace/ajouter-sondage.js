@@ -15,8 +15,7 @@ const Ajouter = () => {
     const [alert_type, setAlertType] = useState()
 
     const [groupe, setGroupe] = useState([])
-    const [titre, setTitre] = useState()
-    const [description, setDescription] = useState()
+    const [message, setMessage] = useState()
 
     //useEffects HOOKS
     useEffect(() => {
@@ -45,7 +44,7 @@ const Ajouter = () => {
         if(groupe.length === 0){
             setAlert(true)
             setAlertType('error')
-            setAlertMessage('Veuillez spécifier a qui diffuser le message')
+            setAlertMessage('Veuillez spécifier a qui diffuser le sondage')
             setTimeout(() => {
                 setAlert(false)
                 setAlertType(false)
@@ -53,10 +52,10 @@ const Ajouter = () => {
             }, 3000)
             return 0
         }
-        if(!titre || !description){
+        if(!message){
             setAlert(true)
             setAlertType('error')
-            setAlertMessage('Veuillez entrer le title et la decription du message')
+            setAlertMessage('Veuillez entrer un message')
             setTimeout(() => {
                 setAlert(false)
                 setAlertType(false)
@@ -66,10 +65,9 @@ const Ajouter = () => {
         }
         Axios({
             method: 'POST',
-            url: '/api/ajouter-information',
+            url: '/api/ajouter-sondage',
             data: {
-                titre: titre,
-                description: description,
+                message: message,
                 auteur: user.nom_complet,
                 groupe: groupe
             }
@@ -87,7 +85,7 @@ const Ajouter = () => {
             }
             setAlert(true)
             setAlertType('success')
-            setAlertMessage('information publié ✅')
+            setAlertMessage('sondage publié ✅')
             setTimeout(() => {
                 setAlert(false)
                 setAlertType(false)
@@ -107,10 +105,9 @@ const Ajouter = () => {
                         {alert && alert_type && alert_message && 
                             <h1 className={`py-2 my-3 w-2/4 px-6 font-bold text-center text-lg rounded-md shadow-md text-white ${alert_type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}>{alert_message}</h1>
                         }
-                        <h1 className="text-gray-700 font-bold text-2xl">Ajouter nouvelle information 💬</h1>
+                        <h1 className="text-gray-700 font-bold text-2xl">Ajouter nouveau sondage 📅</h1>
                         <form onSubmit={e => diffuser(e)} className="my-5">
-                            <input onChange={e => setTitre(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Titre de l'information..." /><br />
-                            <textarea onChange={e => setDescription(e.target.value)} className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="description de l'information..."></textarea><br />
+                            <input onChange={e => setMessage(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Message a afficher..." /><br />
                             <span className="text-gray-700 font-bold text-md my-2">Diffuser pour : </span>
                             
                             <input value="responsable" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Les responsables d&apos;équipes

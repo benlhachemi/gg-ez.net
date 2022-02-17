@@ -6,8 +6,8 @@ const handler = async(req, res) => {
     if(req.method === 'DELETE'){
         try{
             await Session.deleteOne({session_id: req.body})
-            .then(res => {
-                if(res.deletedCount) return res.json({error: false}) 
+            .then(result => {
+                if(result.deletedCount) return res.json({error: false}) 
                 return res.json({error: true, error_message: 'session id not destroyed from db'}) 
             })
         }catch(err){

@@ -31,7 +31,7 @@ const Connexion = () => {
 
     //useEffect HOOKS
     useEffect(() => {
-        console.log(user)
+        if(user) window.location.href = '/espace'
     }, [user])
 
     //functions

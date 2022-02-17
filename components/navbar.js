@@ -10,7 +10,7 @@ const Navbar = () => {
     //main render
     return (
         <nav className='w-full lg:h-full bg-green-600 px-5 lg:px-20 lg:pl-60 font-bold lg:flex gap-10 text-gray-100 shadow-md text-sm items-center'>
-            <MenuIcon onClick={e => setMobileMenuActive(!mobileMenuActive)} className='lg:hidden bg-black bg-opacity-25 w-16 h-10 py-2 rounded-md cursor-pointer my-2 animate__animated animate__bounceInDown'/>
+            <div className='lg:hidden'><MenuIcon onClick={e => setMobileMenuActive(!mobileMenuActive)} className='lg:hidden bg-black bg-opacity-25 w-16 h-10 py-2 rounded-md cursor-pointer my-2 animate__animated animate__bounceInDown'/></div>
             <div className={`${mobileMenuActive ? 'block' : 'hidden'} lg:hidden py-2 animate__animated animate__bounceInUp`}>
                 <h1 className='text-gray-100 my-3'>Mot de la direction</h1>
                 <h1 className='text-gray-100 my-3'>Organigramme</h1>
@@ -21,7 +21,7 @@ const Navbar = () => {
                 <h1 className='text-gray-100 my-3'>Thémes et axes de recherche</h1>
                 <h1 className='text-gray-100 my-3'>Publications</h1>
                 <h1 className='text-gray-100 my-3'>Communications</h1>
-                <h1 className='text-gray-100 my-3'>Thèses et soutenances</h1>
+                <h1 className='text-gray-100 my-3'>Thèses soutenues</h1>
                 <h1 className='text-gray-100 my-3'>Projets de recherhce</h1>
                 <h1 className='text-gray-100 my-3'>Brevets</h1>
             </div>
@@ -41,7 +41,7 @@ const Navbar = () => {
                     <h1 className='text-gray-400 my-3 hover:text-gray-500'>Thémes et axes de recherche</h1><hr />
                     <h1 className='text-gray-400 my-3 hover:text-gray-500'>Publications</h1><hr />
                     <h1 className='text-gray-400 my-3 hover:text-gray-500'>Communications</h1><hr />
-                    <h1 className='text-gray-400 my-3 hover:text-gray-500'>Thèses et soutenances</h1><hr />
+                    <h1 className='text-gray-400 my-3 hover:text-gray-500'>Thèses soutenues</h1><hr />
                     <h1 className='text-gray-400 my-3 hover:text-gray-500'>Projets de recherhce</h1><hr />
                     <h1 className='text-gray-400 my-3 hover:text-gray-500'>Brevets</h1>
                 </div>
