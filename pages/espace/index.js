@@ -90,7 +90,7 @@ const Index = () => {
                     }
                     {sondages && sondages.map((elt, i) => (
                         <div key={i} className='py-3 my-3 mx-auto w-4/6 animate__slideInUp animate__animated'>
-                            <h1 className="py-3 px-3 text-center mx-auto bg-red-500 text-gray-100 font-bold text-lg rounded-md shadow-md">{elt.auteur} a partagé avec vous un sondage <span className="px-5 text-md bg-black bg-opacity-40 rounded-md mx-2 shadow-md py-1">{elt.votes} personne ont voté</span></h1>
+                            <h1 className="py-3 px-3 text-center mx-auto bg-red-500 text-gray-100 font-bold text-lg rounded-md shadow-md">{elt.auteur} a partagé avec vous un sondage <span className="px-5 text-md bg-black bg-opacity-40 rounded-md mx-2 shadow-md py-1">{elt.votes} personne ont voté</span><br /><br />{elt.message}</h1>
                             <table className="my-1 py-1 px-3 bg-red-400 text-center w-full rounded-md shadow-md text-white font-bold">
                                 <thead className="text-xl">
                                     <th className="py-3"></th>

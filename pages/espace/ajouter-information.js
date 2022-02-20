@@ -56,7 +56,7 @@ const Ajouter = () => {
         if(!titre || !description){
             setAlert(true)
             setAlertType('error')
-            setAlertMessage('Veuillez entrer le title et la decription du message')
+            setAlertMessage('Veuillez entrer le titre et la decription du message')
             setTimeout(() => {
                 setAlert(false)
                 setAlertType(false)
