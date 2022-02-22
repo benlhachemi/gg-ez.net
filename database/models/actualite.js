@@ -1,24 +1,15 @@
 import mongoose from 'mongoose'
 var Schema = mongoose.Schema
 
-var projet = new Schema({
-    auteur: {
-        type: String,
-        required: true
-    },
+var actualite = new Schema({
     titre: {
         type: String,
         required: true
     },
-    date: {
-        type: String,
-        required: true
-    },
-    reference: {
-        type: String,
-        required: true
-    },
     lien: {
+        type: String,
+    },
+    description: {
         type: String,
         required: true
     },
@@ -30,6 +21,6 @@ var projet = new Schema({
 
 mongoose.models = {}
 
-var Projet = mongoose.model('Projet', projet)
+var Actualite = mongoose.model('Actualite', actualite)
 
-export default Projet
+export default Actualite

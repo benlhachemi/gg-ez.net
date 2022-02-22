@@ -18,6 +18,10 @@ var publication = new Schema({
         type: String,
         required: true
     },
+    lien: {
+        type: String,
+        required: true
+    },
     date_publication: {
         type: Date,
         default: Date.now

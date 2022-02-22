@@ -18,6 +18,10 @@ var communication = new Schema({
         type: String,
         required: true
     },
+    lien: {
+        type: String,
+        required: true
+    },
     date: {
         type: String,
         required: true

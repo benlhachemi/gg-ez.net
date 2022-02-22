@@ -39,17 +39,14 @@ const Navbar = () => {
                 PRODUCTION SCIENTIFIQUES
                 <KeyboardArrowDownIcon />
                 <div className='dropdown-1 absolute rounded-md shadow bg-gray-100 w-72 min-h-28 top-full hidden py-1 px-4'>
-                    <h1 className='text-gray-400 my-3 hover:text-gray-500'>Thémes et axes de recherche</h1><hr />
-                    <h1 className='text-gray-400 my-3 hover:text-gray-500'>Publications</h1><hr />
-                    <h1 className='text-gray-400 my-3 hover:text-gray-500'>Communications</h1><hr />
-                    <h1 className='text-gray-400 my-3 hover:text-gray-500'>Thèses soutenues</h1><hr />
-                    <h1 className='text-gray-400 my-3 hover:text-gray-500'>Projets de recherhce</h1><hr />
-                    <h1 className='text-gray-400 my-3 hover:text-gray-500'>Brevets</h1>
+                    <Link href='/publications'><h1 className='text-gray-400 my-3 hover:text-gray-500'>Publications</h1></Link><hr />
+                    <Link href='/communications'><h1 className='text-gray-400 my-3 hover:text-gray-500'>Communications</h1></Link><hr />
+                    <Link href='/theses'><h1 className='text-gray-400 my-3 hover:text-gray-500'>Thèses soutenues</h1></Link><hr />
+                    <Link href='/projets'><h1 className='text-gray-400 my-3 hover:text-gray-500'>Projets de recherhce</h1></Link><hr />
+                    <Link href='/brevets'><h1 className='text-gray-400 my-3 hover:text-gray-500'>Brevets</h1></Link>
                 </div>
             </h1>
-            <h1 className='hidden lg:block py-5 cursor-pointer'>PARTENARIATS</h1>
-            <h1 className='hidden lg:block py-5 cursor-pointer'>ACTUALITES</h1>
-            <h1 className='hidden lg:block py-5 cursor-pointer'>FORMATION</h1>
+            <Link href='/actualites'><h1 className='hidden lg:block py-5 cursor-pointer'>ACTUALITES</h1></Link>
         </nav>
     )
 }

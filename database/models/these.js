@@ -14,6 +14,10 @@ var these = new Schema({
         type: String,
         required: true
     },
+    lien: {
+        type: String,
+        required: true
+    },
     reference: {
         type: String,
         required: true

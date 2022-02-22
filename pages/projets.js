@@ -5,16 +5,16 @@ import { useState, useEffect } from 'react'
 import Axios from 'axios'
 import CircularProgress from '@mui/material/CircularProgress'
 
-const Publications = () => {
+const Projets = () => {
     //useState HOOKS
     const [publications, setPublications] = useState([])
     const [loading, setLoading] = useState(true)
 
     //useEffect HOOKS
     useEffect(() => {
-        Axios.get('/api/get-publications')
+        Axios.get('/api/get-projets')
         .then(res => {
-            setPublications(res.data.publications)
+            setPublications(res.data.projets)
             setLoading(false)
         })
     }, [])
@@ -25,7 +25,7 @@ const Publications = () => {
             <Header />
             <Navbar />
             <div className="w-full text-center">
-                <h1 className="text-center text-2xl lg:text-5xl text-gray-100 py-16 font-bold bg-blue-400 mb-10">Publications</h1>
+                <h1 className="text-center text-2xl lg:text-5xl text-gray-100 py-16 font-bold bg-blue-400 mb-10">Projets de recherche</h1>
                 {loading ? <CircularProgress className='mx-auto'/> : publications.length > 0 &&
                     publications.map((elt, i) => (
                         <table key={i} className='w-3/6 text-center mx-auto py-4 px-4 my-10 border-collapse border-gray-700 rounded-lg shadow-md bg-gray-200'>
@@ -38,8 +38,8 @@ const Publications = () => {
                                 <td className='py-3 border-gray-300 border-b'>{elt.titre}</td>
                             </tr>
                             <tr>
-                                <th className='py-3 border-r border-gray-300 border-b'>Journal</th>
-                                <td className='py-3 border-gray-300 border-b'>{elt.journal}</td>
+                                <th className='py-3 border-r border-gray-300 border-b'>Date</th>
+                                <td className='py-3 border-gray-300 border-b'>{elt.date}</td>
                             </tr>
                             <tr>
                                 <th className='py-3 border-r border-gray-300 border-b'>Références</th>
@@ -57,4 +57,4 @@ const Publications = () => {
     )
 }
 
-export default Publications
+export default Projets
