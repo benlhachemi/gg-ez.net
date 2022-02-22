@@ -14,14 +14,13 @@ const Ajouter = () => {
     const [alert_message, setAlertMessage] = useState()
     const [alert_type, setAlertType] = useState()
 
-    const [groupe, setGroupe] = useState([])
     const [titre, setTitre] = useState()
-    const [description, setDescription] = useState()
+    const [auteur, setAuteur] = useState()
+    const [journal, setJournal] = useState()
+    const [reference, setRef] = useState()
+    const [lien, setLien] = useState()
 
     //useEffects HOOKS
-    useEffect(() => {
-        console.log(groupe)
-    }, [groupe])
 
     //functions
     const redirect_sign_in = () => {
@@ -42,21 +41,10 @@ const Ajouter = () => {
 
     const diffuser = async(e) => {
         e.preventDefault()
-        if(groupe.length === 0){
+        if(!titre || !journal || !reference || !auteur || !lien){
             setAlert(true)
             setAlertType('error')
-            setAlertMessage('Veuillez spécifier a qui diffuser le message')
-            setTimeout(() => {
-                setAlert(false)
-                setAlertType(false)
-                setAlertMessage(false)
-            }, 3000)
-            return 0
-        }
-        if(!titre || !description){
-            setAlert(true)
-            setAlertType('error')
-            setAlertMessage('Veuillez entrer le titre et la decription du message')
+            setAlertMessage('Veuillez remplir tous les champs*')
             setTimeout(() => {
                 setAlert(false)
                 setAlertType(false)
@@ -66,12 +54,13 @@ const Ajouter = () => {
         }
         Axios({
             method: 'POST',
-            url: '/api/ajouter-information',
+            url: '/api/ajouter-publication',
             data: {
                 titre: titre,
-                description: description,
-                auteur: user.nom_complet,
-                groupe: groupe
+                auteur: auteur,
+                journal: journal,
+                reference: reference,
+                lien: lien
             }
         }).then(res => {
             if(res.data.error){
@@ -87,7 +76,7 @@ const Ajouter = () => {
             }
             setAlert(true)
             setAlertType('success')
-            setAlertMessage('information publié ✅')
+            setAlertMessage('publication publié ✅')
             setTimeout(() => {
                 setAlert(false)
                 setAlertType(false)
@@ -100,23 +89,20 @@ const Ajouter = () => {
     //main render
     return (
         <div>
-            {loading ? <Loader /> : !user ? redirect_sign_in() : user && user.role !== 'admin' ? redirect_home() : 
+            {loading ? <Loader /> : !user ? redirect_sign_in() : user && (user.role !== 'admin' && user.role === 'ECSAE' && user.role !== 'ECAE' && user.role !== 'EPCME' && user.role !== 'EEMI' && user.role !== 'permanent') ? redirect_home() : 
                 <div className="w-full min-h-screen bg-gray-100 flex">
                     <Sidebar user={user} />
                     <div className="content min-h-screen w-full py-5 px-5">
                         {alert && alert_type && alert_message && 
                             <h1 className={`py-2 my-3 w-2/4 px-6 font-bold text-center text-lg rounded-md shadow-md text-white ${alert_type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}>{alert_message}</h1>
                         }
-                        <h1 className="text-gray-700 font-bold text-2xl">Ajouter nouvelle information 💬</h1>
+                        <h1 className="text-gray-700 font-bold text-2xl">Ajouter nouvelle publication 📝</h1>
                         <form onSubmit={e => diffuser(e)} className="my-5">
-                            <input onChange={e => setTitre(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Titre de l'information..." /><br />
-                            <textarea onChange={e => setDescription(e.target.value)} className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="description de l'information..."></textarea><br />
-                            <span className="text-gray-700 font-bold text-md my-2">Diffuser pour : </span>
-                            
-                            <input value="responsable" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Les responsables d&apos;équipes
-                            <input value="doctorant" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Doctorant
-                            <input value="permanent" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Permanent
-                            <input value="associe" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Associé
+                            <input onChange={e => setTitre(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Titre de la publication..." /><br />
+                            <input onChange={e => setAuteur(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Auteur de la publication..." /><br />
+                            <input onChange={e => setJournal(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Journal..." /><br />
+                            <input onChange={e => setRef(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Références..." /><br />
+                            <input onChange={e => setLien(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Lien externe..." /><br />
                             <br />
                             <button className="mx-auto py-2 px-3 font-bold text-light rounded-md shadow-md hover:scale-105 transition-all my-3 text-white bg-green-500">Diffuser</button>
                         </form>
