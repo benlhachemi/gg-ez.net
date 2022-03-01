@@ -79,7 +79,7 @@ const Index = () => {
             <div className="w-full min-h-screen bg-gray-100 flex">
                 <Sidebar user={user} />
                 <div className="content min-h-screen w-full px-8 py-5">
-                    <h1 className="text-gray-100 animate__animated animate__bounceIn font-bold text-xl rounded-md shadow-md py-3 px-3 w-3/4 bg-gray-700 mx-auto text-center">Bienvenue Mr/Mme {user.nom_complet} a votre espace peronnel 👋</h1>
+                    <h1 className="text-gray-100 animate__animated animate__bounceIn font-bold text-xl rounded-md shadow-md py-3 px-3 w-3/4 bg-gray-700 mx-auto text-center">Bienvenue Mr/Mme {user.nom_complet} dans votre espace peronnel 👋</h1>
                     {informations && informations.map((elt, i) => (
                         <div key={i} className="bg-blue-500 font-bold animate__animated animate__fadeInRight text-center rounded-md w-2/4 shadow-md py-2 px-4 text-gray-100 mx-auto my-4" style={{animationDelay: i/10 + 's'}}>
                             <h1 className="text-sm bg-black bg-opacity-20 py-2 rounded-md shadow-md text-gray-200 my-2">{elt.auteur} a partagé avec vous une information</h1>
@@ -90,7 +90,7 @@ const Index = () => {
                     }
                     {sondages && sondages.map((elt, i) => (
                         <div key={i} className='py-3 my-3 mx-auto w-4/6 animate__slideInUp animate__animated'>
-                            <h1 className="py-3 px-3 text-center mx-auto bg-red-500 text-gray-100 font-bold text-lg rounded-md shadow-md">{elt.auteur} a partagé avec vous un sondage <span className="px-5 text-md bg-black bg-opacity-40 rounded-md mx-2 shadow-md py-1">{elt.votes} personne ont voté</span><br /><br />{elt.message}</h1>
+                            <h1 className="py-3 px-3 text-center mx-auto bg-red-500 text-gray-100 font-bold text-lg rounded-md shadow-md">{elt.auteur} a partagé avec vous un sondage <span className="px-5 text-md bg-black bg-opacity-40 rounded-md mx-2 shadow-md py-1">{elt.votes} {elt.votes === 1 ? 'personne a voté' : 'personnes ont voté'}</span><br /><br />{elt.message}</h1>
                             <table className="my-1 py-1 px-3 bg-red-400 text-center w-full rounded-md shadow-md text-white font-bold">
                                 <thead className="text-xl">
                                     <th className="py-3"></th>

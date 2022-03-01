@@ -18,10 +18,6 @@ var these = new Schema({
         type: String,
         required: true
     },
-    reference: {
-        type: String,
-        required: true
-    },
     date_publication: {
         type: Date,
         default: Date.now

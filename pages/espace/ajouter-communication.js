@@ -93,11 +93,11 @@ const Ajouter = () => {
                         <h1 className="text-gray-700 font-bold text-2xl">Ajouter nouvelle communication 📝</h1>
                         <form onSubmit={e => diffuser(e)} className="my-5">
                             <input onChange={e => setTitre(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Titre de la communication..." /><br />
-                            <input onChange={e => setAuteur(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Auteur de la communication..." /><br />
+                            <input onChange={e => setAuteur(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Auteurs de la communication..." /><br />
                             <input onChange={e => setLieu(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Lieu..." /><br />
                             <input onChange={e => setRef(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Références..." /><br />
-                            <input onChange={e => setLien(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Lien externe..." /><br />
-                            <input onChange={e => setDate(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="La date de la communication..." /><br />
+                            <input onChange={e => setLien(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Lien web..." /><br />
+                            <input onChange={e => setDate(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Date de la manifestation..." /><br />
                             <br />
                             <button className="mx-auto py-2 px-3 font-bold text-light rounded-md shadow-md hover:scale-105 transition-all my-3 text-white bg-green-500">Publier</button>
                         </form>

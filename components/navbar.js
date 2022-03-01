@@ -36,7 +36,7 @@ const Navbar = () => {
                 </div>
             </h1>
             <h1 className='menu-1 hidden relative lg:block py-5 cursor-pointer'>
-                PRODUCTION SCIENTIFIQUES
+                PRODUCTION SCIENTIFIQUE
                 <KeyboardArrowDownIcon />
                 <div className='dropdown-1 absolute rounded-md shadow bg-gray-100 w-72 min-h-28 top-full hidden py-1 px-4'>
                     <Link href='/publications'><h1 className='text-gray-400 my-3 hover:text-gray-500'>Publications</h1></Link><hr />

@@ -114,9 +114,9 @@ const Ajouter = () => {
                             <span className="text-gray-700 font-bold text-md my-2">Diffuser pour : </span>
                             
                             <input value="responsable" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Les responsables d&apos;équipes
-                            <input value="doctorant" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Doctorant
-                            <input value="permanent" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Permanent
-                            <input value="associe" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Associé
+                            <input value="doctorant" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Doctorants
+                            <input value="permanent" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Permanents
+                            <input value="associe" onChange={e => add_to_group(e)} type="checkbox" className="mr-1 ml-4 my-2" />Associés
                             <br />
                             <button className="mx-auto py-2 px-3 font-bold text-light rounded-md shadow-md hover:scale-105 transition-all my-3 text-white bg-green-500">Diffuser</button>
                         </form>

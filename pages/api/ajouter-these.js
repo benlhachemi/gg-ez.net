@@ -9,7 +9,6 @@ const handler = async(req, res) => {
                 auteur: req.body.auteur,
                 date: req.body.date,
                 titre: req.body.titre,
-                reference: req.body.reference,
                 lien: req.body.lien
             })
             await these.save().then(result => {

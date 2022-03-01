@@ -42,7 +42,7 @@ const Sidebar = ({user}) => {
                 <>
                 <Link href='/espace/ajouter-publication'><h1 className="text-white py-3 px-2 rounded-md shadow cursor-pointer my-3 bg-gray-600 hover:bg-gray-800"><AddIcon sx={{fontSize: '20px'}} /> Nouvelle publication</h1></Link>
                 <Link href='/espace/ajouter-communication'><h1 className="text-white py-3 px-2 rounded-md shadow cursor-pointer my-3 bg-gray-600 hover:bg-gray-800"><AddIcon sx={{fontSize: '20px'}} /> Nouvelle communication</h1></Link>
-                <Link href='/espace/ajouter-these'><h1 className="text-white py-3 px-2 rounded-md shadow cursor-pointer my-3 bg-gray-600 hover:bg-gray-800"><AddIcon sx={{fontSize: '20px'}} /> Nouvelle thése</h1></Link>
+                <Link href='/espace/ajouter-these'><h1 className="text-white py-3 px-2 rounded-md shadow cursor-pointer my-3 bg-gray-600 hover:bg-gray-800"><AddIcon sx={{fontSize: '20px'}} /> Nouvelle thèse</h1></Link>
                 <Link href='/espace/ajouter-projet'><h1 className="text-white py-3 px-2 rounded-md shadow cursor-pointer my-3 bg-gray-600 hover:bg-gray-800"><AddIcon sx={{fontSize: '20px'}} /> Nouveau projet</h1></Link>
                 <Link href='/espace/ajouter-brevet'><h1 className="text-white py-3 px-2 rounded-md shadow cursor-pointer my-3 bg-gray-600 hover:bg-gray-800"><AddIcon sx={{fontSize: '20px'}} /> Nouveau brevet</h1></Link>
                 <Link href='/espace/ajouter-actualite'><h1 className="text-white py-3 px-2 rounded-md shadow cursor-pointer my-3 bg-gray-600 hover:bg-gray-800"><AddIcon sx={{fontSize: '20px'}} /> Nouvelle actualité</h1></Link>

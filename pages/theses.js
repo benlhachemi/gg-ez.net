@@ -42,11 +42,7 @@ const Theses = () => {
                                 <td className='py-3 border-gray-300 border-b'>{elt.date}</td>
                             </tr>
                             <tr>
-                                <th className='py-3 border-r border-gray-300 border-b'>Références</th>
-                                <td className='py-3 border-gray-300 border-b'>{elt.reference}</td>
-                            </tr>
-                            <tr>
-                                <th className='py-3 border-r border-gray-300 border-b'>Lien</th>
+                                <th className='py-3 border-r border-gray-300 border-b'>Lien web</th>
                                 <td className='py-3 border-gray-300 border-b'><a className='text-blue-500 ' href={elt.lien}>{elt.lien}</a></td>
                             </tr>
                         </table>
