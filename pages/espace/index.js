@@ -8,11 +8,11 @@ import { useState, useEffect } from "react"
 const Index = () => {
     //useAuth HOOK
     const [user, loading] = useAuth()
-    console.log(user)
 
     //useState HOOKS
     const [informations, setInformations] = useState(false)
     const [sondages, setSondages] = useState(false)
+    const [results, setResults] = useState([])
 
     //useEffect HOOKS
     useEffect(() => {
@@ -35,32 +35,30 @@ const Index = () => {
         }
     }, [user])
 
+    useEffect(() => {
+        console.log(results)
+    }, [results])
+
     //functions
     const redirect_sign_in = () => {
         window.location.href = '/connexion'
     }
 
-    const deconnexion = async() => {
-        window.localStorage.removeItem('session_id')
-        Axios({
-            method: 'DELETE',
-            url: '/api/destroy-session',
-            data: user.session_id
-        })
-        .then(res => window.location.reload())
-    }
-
-    const Choisir = async (vote, e, id, votes) => {
+    const confimer_vote = (id, votes) => {
         Axios({
             method: 'PUT',
             url: '/api/ajouter-vote',
             data: {
-                vote: vote,
+                vote: results,
                 user_id: user.user_id,
                 sondage_id: id,
                 votes: votes
             }
-        })
+        }).then(res => {window.location.reload()})
+    }
+
+    const Choisir = async (vote, e, id, votes) => {
+        setResults([...results, vote])
         const btns = e.target.parentNode.querySelector('button').style.display = 'none'
     }
 
@@ -274,6 +272,12 @@ const Index = () => {
                                     </tr>
                                 </tbody>
                             </table>
+                            {!elt.participants.includes(user.user_id) &&
+                                <div className="flex w-2/6 mx-auto text-center my-3">
+                                    <button onClick={e => confimer_vote(elt._id, elt.votes)} className="mx-auto bg-green-500 cursor-pointer rounded-md shadow-md  py-2 px-3 text-center text-white">Confirmer</button>
+                                    <button onClick={e => window.location.reload()} className="mx-auto bg-red-500 cursor-pointer rounded-md shadow-md  py-2 px-3 text-center text-white">Annuler</button>
+                                </div>
+                            }
                         </div>
                     ))}
                 </div>

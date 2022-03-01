@@ -86,11 +86,6 @@ const Ajouter = () => {
             setAlert(true)
             setAlertType('success')
             setAlertMessage('sondage publié ✅')
-            setTimeout(() => {
-                setAlert(false)
-                setAlertType(false)
-                setAlertMessage(false)
-            }, 5000)
             return 0
         })
     }
@@ -102,9 +97,10 @@ const Ajouter = () => {
                 <div className="w-full min-h-screen bg-gray-100 flex">
                     <Sidebar user={user} />
                     <div className="content min-h-screen w-full py-5 px-5">
-                        {alert && alert_type && alert_message && 
+                        {alert && alert_type && alert_message ? 
                             <h1 className={`py-2 my-3 w-2/4 px-6 font-bold text-center text-lg rounded-md shadow-md text-white ${alert_type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}>{alert_message}</h1>
-                        }
+                        :
+                        <>
                         <h1 className="text-gray-700 font-bold text-2xl">Ajouter nouveau sondage 📅</h1>
                         <form onSubmit={e => diffuser(e)} className="my-5">
                             <input onChange={e => setMessage(e.target.value)} type="text" className="py-2 px-6 text-center rounded-md shadow-md w-96 my-2" placeholder="Message a afficher..." /><br />
@@ -117,6 +113,8 @@ const Ajouter = () => {
                             <br />
                             <button className="mx-auto py-2 px-3 font-bold text-light rounded-md shadow-md hover:scale-105 transition-all my-3 text-white bg-green-500">Diffuser</button>
                         </form>
+                        </>
+                        }
                     </div>
                 </div>
             }
